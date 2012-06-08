@@ -1,5 +1,3 @@
-
-
    
     /* Notifier class constructor */
     function SimpleNotifier(config) {
@@ -23,7 +21,7 @@
          },
          
          timeout : {
-             value : 4000
+             value : 0
          }
     };
  
@@ -35,7 +33,6 @@
     Y.extend(SimpleNotifier, Y.Widget, {
     	
     	BOUNDING_TEMPLATE : '<div/>',
-    	
     	
         initializer: function() {
             this.publish("closeEvent", {
@@ -101,12 +98,16 @@
         syncUI : function() {
              this._uiSetMessage(this.get("message"));
              this._uiSetHeader(this.get("header"));
-             this.timer = new Y.Timer({
-                 length: this.get("timeout"),
-                 repeatCount: 1,
-                 callback: Y.bind(this.hide, this)
-               });
-               this.timer.start();
+             
+             var timeout = this.get("timeout");
+             if(timeout > 0){
+            	 this.timer = new Y.Timer({
+                     length: timeout,
+                     repeatCount: 1,
+                     callback: Y.bind(this.hide, this)
+                   });
+                   this.timer.start();
+             }
         },
         
         _onHover : function() {
@@ -136,8 +137,8 @@
         	if(e || e.newVal) {
         		this._uiSetHeader(e.newVal);
         	}
-             
         },
+        
         _uiSetMessage : function(val) {
             /* Update the state of attrA in the UI (view) */
             var content = Y.one('.yui3-simplenotifier-message');
@@ -155,4 +156,3 @@
     });
 
     Y.SimpleNotifier = SimpleNotifier;
-

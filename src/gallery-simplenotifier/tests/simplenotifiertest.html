@@ -10,7 +10,7 @@
 <script type="text/javascript" src="../js/simplenotifier.js"></script>
 <style>
 #booga {
-	height: 1000px;
+	height: 10000px;
 	line-height: 200px;
 	width: 450px;
 	border: 2px solid #000;
@@ -29,7 +29,7 @@
 	</div>
 	<script>
         YUI().use("gallery-simplenotifier", function(Y) {
-		  	var t = new Y.SimpleNotifier({timeout:12000, position:"top-left"});
+		  	var t = new Y.SimpleNotifier({position:"bottom-left"});
 		  	t.set("message","message in here....");
             t.render();
         });
