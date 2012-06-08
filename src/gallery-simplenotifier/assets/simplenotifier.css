@@ -2,7 +2,7 @@
  .yui3-simplenotifier {
 	
 	font-size: 12px;
-	position: absolute;
+	position: fixed;
 	z-index: 9999;
 }
 
@@ -17,7 +17,7 @@
 }
 
  .yui3-simplenotifier.bottom-left {
-	left: 0px;
+ 	left: 0px;
 	bottom: 0px;
 }
 
